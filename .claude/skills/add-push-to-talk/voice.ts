@@ -37,6 +37,7 @@ export class VoiceChannel implements Channel {
       );
       this.server.listen(VOICE_PORT, () => {
         this.connected = true;
+        this.opts.onChatMetadata(VOICE_JID, new Date().toISOString(), 'Voice', 'voice', false);
         logger.info({ port: VOICE_PORT }, 'Voice channel listening');
         resolve();
       });
